@@ -19,10 +19,13 @@ jobs:
       - run: npx cap add android
       - run: npx capacitor-assets generate --android
       - run: npx cap sync android
-      - name: Add notification permission
+      - name: Add notification permissions
         run: |
           f=android/app/src/main/AndroidManifest.xml
-          grep -q POST_NOTIFICATIONS $f || sed -i 's#<application#<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />\n    <application#' $f
+          for perm in POST_NOTIFICATIONS SCHEDULE_EXACT_ALARM USE_EXACT_ALARM; do
+            grep -q "android.permission.$perm" $f || sed -i "s#<application#<uses-permission android:name=\"android.permission.$perm\" />\n    <application#" $f
+          done
+          grep permission $f
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
         with:
