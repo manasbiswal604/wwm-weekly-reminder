@@ -1,11 +1,21 @@
-name: Build APK
+name: Build APK and Release
+
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      KS_B64: ${{ secrets.KEYSTORE_BASE64 }}
+      KS_PASS: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_PASS: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,15 +29,47 @@ jobs:
       - run: npx cap add android
       - run: npx capacitor-assets generate --android
       - run: npx cap sync android
+
       - name: Add notification permissions
         run: |
           f=android/app/src/main/AndroidManifest.xml
           for perm in POST_NOTIFICATIONS SCHEDULE_EXACT_ALARM USE_EXACT_ALARM; do
             grep -q "android.permission.$perm" $f || sed -i "s#<application#<uses-permission android:name=\"android.permission.$perm\" />\n    <application#" $f
           done
-          grep permission $f
-      - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
+
+      - name: Set version
+        run: |
+          sed -i "s/versionCode 1/versionCode ${{ github.run_number }}/" android/app/build.gradle
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            sed -i "s/versionName \"1.0\"/versionName \"${GITHUB_REF_NAME#v}\"/" android/app/build.gradle
+          fi
+
+      - name: Build APK
+        run: |
+          cd android && chmod +x gradlew
+          if [ -n "$KS_B64" ]; then ./gradlew assembleRelease; else ./gradlew assembleDebug; fi
+
+      - name: Sign release APK
+        if: env.KS_B64 != ''
+        run: |
+          BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1)
+          echo "$KS_B64" | base64 -d > release.jks
+          $BT/zipalign -p 4 android/app/build/outputs/apk/release/app-release-unsigned.apk aligned.apk
+          $BT/apksigner sign --ks release.jks --ks-pass env:KS_PASS --key-pass env:KEY_PASS --ks-key-alias "$KEY_ALIAS" --out WeeklyShops.apk aligned.apk
+          rm release.jks
+
+      - name: Use debug APK when no signing key is set
+        run: |
+          [ -f WeeklyShops.apk ] || cp android/app/build/outputs/apk/debug/app-debug.apk WeeklyShops.apk
+
       - uses: actions/upload-artifact@v4
         with:
           name: weekly-shops-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: WeeklyShops.apk
+
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: WeeklyShops.apk
+          generate_release_notes: true
