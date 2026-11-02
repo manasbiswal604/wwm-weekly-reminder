@@ -18,10 +18,16 @@ button{font-family:inherit}
 .page>.in{max-width:560px;margin:0 auto}
 .hd{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .hact{display:flex;gap:8px}
+.brandmark{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.brandmark .mark{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,#0d7bff,#0b5ad1);box-shadow:0 10px 24px rgba(18,91,212,.26)}
+.brandmark svg{width:30px;height:30px;display:block}
+.brandmark .text{display:flex;flex-direction:column;min-width:0}
+.brandmark .title{font-size:15px;font-weight:700;letter-spacing:-.02em}
+.brandmark .subtitle{font-size:12px;color:var(--mut)}
 h1{font-size:26px;margin:8px 0 2px;letter-spacing:-.02em}
 .sub{color:var(--mut);font-size:14px;margin:0 0 16px}
 .bi{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;vertical-align:-3px}
-.ib{width:42px;height:42px;border-radius:14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);display:grid;place-items:center;cursor:pointer;flex:none;transition:transform .12s,background .2s}
+.ib{width:42px;height:42px;border-radius:14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);display:grid;place-items:center;cursor:pointer;flex:none;transition:transform .12s,b[...]
 .ib.on{background:var(--ac);color:var(--on);border-color:transparent}
 .ib:active,.btn:active,.chip:active{transform:scale(.95)}
 .hero{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:16px;display:flex;gap:14px;align-items:center}
@@ -75,7 +81,7 @@ summary::-webkit-details-marker{display:none}
 /* settings */
 .sec h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);margin:24px 6px 8px;font-weight:600}
 .grp{background:var(--card);border:1px solid var(--bd);border-radius:16px;overflow:hidden}
-.sr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-top:1px solid var(--bd);min-height:52px;width:100%;background:none;color:var(--tx);font:inherit;text-align:left;border-left:0;border-right:0;border-bottom:0}
+.sr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-top:1px solid var(--bd);min-height:52px;width:100%;background:none;color:var(--tx);font:inherit}
 .sr:first-child{border-top:0}
 .sr small{display:block;color:var(--mut);font-size:12px}
 .sr .v{color:var(--mut);font-size:14px}
@@ -96,7 +102,7 @@ input[type=color]{width:38px;height:34px;border:0;background:none;padding:0}
 .sw2 input:checked+span::after{transform:translateX(18px)}
 .note{color:var(--mut);font-size:12px;margin:8px 8px 0}
 /* nav */
-.nav{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);transform:translateX(-50%);z-index:5;padding:4px;border-radius:18px;background:color-mix(in srgb,var(--card) 60%,transparent);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border:1px solid color-mix(in srgb,var(--tx) 12%,transparent);box-shadow:0 10px 26px rgba(0,0,0,.28);transition:transform .38s cubic-bezier(.32,.72,0,1),opacity .3s}
+.nav{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);transform:translateX(-50%);z-index:5;padding:4px;border-radius:18px;background:color-mix(in srgb,var(--card) 60%,transparent);backdrop-filter:blur(12px);border:1px solid var(--bd)}
 .nav.hide{transform:translate(-50%,160%);opacity:0}
 .nav .in{position:relative;display:grid;grid-template-columns:repeat(2,52px)}
 .nav button{position:relative;z-index:1;border:0;background:none;color:var(--mut);display:grid;place-items:center;height:38px;cursor:pointer;transition:color .25s}
@@ -105,12 +111,12 @@ input[type=color]{width:38px;height:34px;border:0;background:none;padding:0}
 .nav button.on svg{transform:scale(1.12)}
 .pill{position:absolute;top:0;bottom:0;left:0;width:50%;border-radius:14px;background:color-mix(in srgb,var(--ac) 16%,transparent);transition:transform .38s cubic-bezier(.32,.72,0,1)}
 .pill.s{transform:translateX(100%)}
-.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 72px);transform:translate(-50%,20px);opacity:0;background:var(--tx);color:var(--bg);padding:11px 16px;border-radius:14px;font-size:14px;max-width:88%;text-align:center;z-index:30;pointer-events:none;transition:transform .3s,opacity .3s}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 72px);transform:translate(-50%,20px);opacity:0;background:var(--tx);color:var(--bg);padding:11px 16px;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.18);transition:opacity .2s,transform .2s;font-size:14px;max-width:80vw;text-align:center}
 .toast.show{transform:translate(-50%,0);opacity:1}
 /* sheet */
 .ov{position:fixed;inset:0;z-index:20;display:flex;align-items:flex-end;justify-content:center}
 .shade{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
-.sheet{position:relative;width:100%;max-width:560px;background:var(--card);border-radius:24px 24px 0 0;padding:10px 18px calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1);max-height:86vh;overflow-y:auto}
+.sheet{position:relative;width:100%;max-width:560px;background:var(--card);border-radius:24px 24px 0 0;padding:10px 18px calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateY(100%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
 .ov.show .shade{opacity:1}
 .ov.show .sheet{transform:none}
 .grab{width:38px;height:4px;border-radius:2px;background:var(--bd);margin:0 auto 12px}
@@ -158,24 +164,23 @@ input[type=color]{width:38px;height:34px;border:0;background:none;padding:0}
 </svg>
 
 <div class="track" id="track">
- <div class="page" id="home"><div class="in">
-  <header class="hd"><div><h1>Weekly shops</h1><p class="sub">Resets every Monday at 02:30</p></div>
-   <div class="hact"><button class="ib" id="btnArr" aria-label="Arrange categories"><svg class="bi"><use href="#arrange"/></svg></button><button class="ib" id="btnAdd" aria-label="Add category"><svg class="bi"><use href="#plus"/></svg></button></div></header>
-  <section class="hero">
-   <div class="ring"><svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="var(--bd)" stroke-width="8"/><circle id="arc" cx="36" cy="36" r="30" fill="none" stroke="var(--ok)" stroke-width="8" stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg><b id="pct">0%</b></div>
-   <p><strong id="cnt">0 of 0 done</strong><span id="msg">Tap an item to mark it done.</span></p>
-  </section>
-  <div class="acts">
-   <button class="btn" id="all"><svg class="bi"><use href="#tick"/></svg> Mark all complete</button>
-   <button class="btn rst" id="rst"><svg class="bi"><use href="#cross"/></svg> Reset</button>
-  </div>
-  <div id="list"></div>
-  <p class="foot">Progress is saved on this device.</p>
- </div></div>
- <div class="page" id="settings" aria-hidden="true"><div class="in">
-  <header class="hd"><div><h1>Settings</h1><p class="sub">Notifications, appearance and data</p></div></header>
-  <div id="setbody"></div>
- </div></div>
+  <div class="page" id="home"><div class="in">
+   <header class="hd"><div class="brandmark"><div class="mark" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 20C30 16 40 14 52 14C62 14 70 17 78 24C87 31 93 40 95 49C97 58 95 68 88 76C81 85 70 90 58 91C47 92 36 91 24 89L24 78L35 78C36 72 37 66 44 62C53 57 68 57 75 64C82 71 82 83 75 88C67 95 55 95 45 92C35 88 26 81 21 72C15 62 14 48 18 35C22 24 28 20 38 18C49 16 63 18 77 25L84 17C71 8 58 4 46 4C34 4 25 7 18 20Z" fill="rgba(255,255,255,0.9)"/><path d="M33 24H51V54H69V24H87V92H69V68H51V92H33V24Z" fill="#0b4db4"/><path d="M18 22C30 16 40 15 52 15C63 15 71 18 80 26C89 34 94 44 95 54C96 65 92 73 86 80C79 88 68 92 56 93C46 94 35 93 24 89L24 78L35 78C36 73 37 68 45 64C54 59 67 59 75 66C81 72 82 79 80 84C77 90 69 94 58 94C47 94 36 90 29 83C22 76 18 69 18 58V22Z" fill="url(#g)" opacity="0.9"/><defs><linearGradient id="g" x1="20" y1="16" x2="90" y2="92" gradientUnits="userSpaceOnUse"><stop stop-color="#7dd3ff"/><stop offset="1" stop-color="#0b4db4"/></linearGradient></defs></svg></div><div class="text"><div class="title">WWM Weekly Reminder</div><div class="subtitle">Weekly shops planner</div></div></div><div class="hact"><button class="ib" id="btnArr" aria-label="Arrange categories"><svg class="bi"><use href="#arrange"/></svg></button><button class="ib" id="btnAdd" aria-label="Add category"><svg class="bi"><use href="#plus"/></svg></button></div></header>
+   <section class="hero">
+    <div class="ring"><svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="var(--bd)" stroke-width="8"/><circle id="arc" cx="36" cy="36" r="30" fill="none" stroke="var(--ok)" stroke-width="8" stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg><b id="pct">0%</b></div>
+    <p><strong id="cnt">0 of 0 done</strong><span id="msg">Tap an item to mark it done.</span></p>
+   </section>
+   <div class="acts">
+    <button class="btn" id="all"><svg class="bi"><use href="#tick"/></svg> Mark all complete</button>
+    <button class="btn rst" id="rst"><svg class="bi"><use href="#cross"/></svg> Reset</button>
+   </div>
+   <div id="list"></div>
+   <p class="foot">Progress is saved on this device.</p>
+  </div></div>
+  <div class="page" id="settings" aria-hidden="true"><div class="in">
+   <header class="hd"><div><h1>Settings</h1><p class="sub">Notifications, appearance and data</p></div></header>
+   <div id="setbody"></div>
+  </div></div>
 </div>
 
 <nav class="nav"><div class="in"><span class="pill" id="pill"></span>
@@ -203,10 +208,11 @@ var SHOPS=[
 ["Heaven’s Pier Merchant","pin",["Wine Scented Jade"]]
 ];
 var ICONS=["gem","chest","shirt","anvil","bag","sword","pin","leaf","star"],VERSION="1.5.0";
+var APP_INFO={developer:"Manas Biswal",github:"https://github.com/manasbiswal604/wwm-weekly-reminder"};
 var $=function(i){return document.getElementById(i)};
 function g(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function s(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})}
 function uid(){return"n"+Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
 var tt;function toast(m){var e=$("toast");e.textContent=m;e.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){e.classList.remove("show")},3400)}
 
@@ -249,7 +255,7 @@ function ask(title,val,okLabel,cb){
     if(a==="no")closeSheet();else if(a==="ok"){var v=$("sin").value.trim();if(!v){toast("Please enter a name");return}closeSheet();cb(v)}});
   setTimeout(function(){var i=$("sin");if(i){i.focus();i.select()}},330)}
 function confirmS(title,msg,okLabel,cb){
-  sheet('<p class="sh-t">'+title+'</p><p class="sh-m">'+msg+'</p><div class="brow"><button class="btn rst" data-a="no">Cancel</button><button class="btn" style="background:var(--no);color:#fff" data-a="ok">'+okLabel+'</button></div>',function(a){closeSheet();if(a==="ok")cb()})}
+  sheet('<p class="sh-t">'+title+'</p><p class="sh-m">'+msg+'</p><div class="brow"><button class="btn rst" data-a="no">Cancel</button><button class="btn" style="background:var(--no);color:#fff" data-a="ok">'+okLabel+'</button></div>',function(a){if(a==="no")closeSheet();else if(a==="ok")closeSheet(),cb()})}
 function docS(title,html){sheet('<p class="sh-t">'+title+'</p><div class="doc2">'+html+'</div><button class="btn" style="width:100%" data-a="x">Close</button>',closeSheet)}
 
 /* ---------- category / item actions ---------- */
@@ -258,15 +264,16 @@ function renItem(lid,id){var it=byId(lid).items.filter(function(i){return i.id==
 function delItem(lid,id){var x=byId(lid);x.items=x.items.filter(function(i){return i.id!==id});delete st.done[id];save();saveL();toast("Item removed")}
 function addCat(){ask("New category","","Create",function(v){var c={id:uid(),name:v,ic:"star",items:[]};L.push(c);open[c.id]=true;saveL();toast("Category created. Open ⋯ to add items.")})}
 function menu(lid){var x=byId(lid);
-  sheet('<p class="sh-t">'+esc(x.name)+'</p>'+srow("add","plus","Add item")+srow("edit","list","Edit items")+srow("ren","pencil","Rename category")+srow("ico","star","Change icon")+srow("del","trash","Delete category",1),function(a){
+  sheet('<p class="sh-t">'+esc(x.name)+'</p>'+srow("add","plus","Add item")+srow("edit","list","Edit items")+srow("ren","pencil","Rename category")+srow("ico","star","Change icon")+srow("del","trash","Delete category","dng"'),function(a){
     if(a==="add")addItem(lid);
     else if(a==="edit"){closeSheet();mode="edit:"+lid;open[lid]=true;render()}
     else if(a==="ren")ask("Rename category",x.name,"Save",function(v){x.name=v;saveL()});
     else if(a==="ico")iconPick(x);
-    else if(a==="del")confirmS("Delete “"+esc(x.name)+"”?","This removes the category and its "+x.items.length+" item(s).","Delete",function(){x.items.forEach(function(i){delete st.done[i.id]});L=L.filter(function(c){return c.id!==lid});save();saveL();toast("Category deleted")})})}
+    else if(a==="del")confirmS("Delete “"+esc(x.name)+"”?","This removes the category and its "+x.items.length+" item(s).","Delete",function(){x.items.forEach(function(i){delete st.done[i.id]});L=L.filter(function(c){return c.id!==lid});save();saveL();closeSheet();toast("Category deleted")});
+    else closeSheet();});
+}
 function iconPick(x){
-  sheet('<p class="sh-t">Choose an icon</p><div class="igrid">'+ICONS.map(function(n){return'<button data-a="i:'+n+'" class="'+(x.ic===n?'on':'')+'" aria-label="'+n+'"><svg><use href="#'+n+'"/></svg></button>'}).join("")+'</div>',function(a){
-    if(a.indexOf("i:")===0){x.ic=a.slice(2);closeSheet();saveL()}})}
+  sheet('<p class="sh-t">Choose an icon</p><div class="igrid">'+ICONS.map(function(n){return'<button data-a="i:'+n+'" class="'+(x.ic===n?'on':'')+'" aria-label="'+n+'"><svg><use href="#'+n+'"/></svg></button>'}).join("")+'</div>',function(a){if(a.indexOf("i:")===0){x.ic=a.slice(2);closeSheet();saveL()}})}
 
 /* ---------- home render ---------- */
 function render(){
@@ -276,13 +283,17 @@ function render(){
     var n=0;x.items.forEach(function(it){if(st.done[it.id])n++});
     var ic='<span class="ic"><svg><use href="#'+x.ic+'"/></svg></span>',mb='<button class="mb" data-menu="'+x.id+'" aria-label="Category options"><svg class="bi"><use href="#more"/></svg></button>';
     if(mode==="arrange"){
-      h+='<div class="arr" data-lid="'+x.id+'"><button class="grip" data-drag aria-label="Drag to reorder"><svg class="bi"><use href="#grip"/></svg></button>'+ic+'<span class="nm">'+esc(x.name)+'</span><span class="ct">'+x.items.length+' items</span>'+mb+'</div>';return}
+      h+='<div class="arr" data-lid="'+x.id+'"><button class="grip" data-drag aria-label="Drag to reorder"><svg class="bi"><use href="#grip"/></svg></button>'+ic+'<span class="nm">'+esc(x.name)+'</span><span class="ct'+(n===x.items.length?' full':'')+'">'+n+'/'+x.items.length+'</span>'+mb+'</div>';
+      return;
+    }
     var ed=mode==="edit:"+x.id,rows="";
     x.items.forEach(function(it){
       if(ed)rows+='<div class="row edit" data-id="'+it.id+'"><button class="grip" data-drag aria-label="Drag to reorder"><svg class="bi"><use href="#grip"/></svg></button><span class="tx" data-ren="'+it.id+'">'+esc(it.t)+'</span><button class="xb" data-del="'+it.id+'" aria-label="Delete item"><svg class="bi"><use href="#trash"/></svg></button></div>';
-      else{var on=st.done[it.id];rows+='<button class="row'+(on?' on':'')+'" data-k="'+it.id+'"><span class="mk'+((on&&(allPop||it.id===lastKey))?' pop':'')+'"><svg><use href="#'+(on?'tick':'cross')+'"/></svg></span><span class="tx">'+esc(it.t)+'</span></button>'}});
+      else{var on=st.done[it.id];rows+='<button class="row'+(on?' on':'')+'" data-k="'+it.id+'"><span class="mk'+((on&&(allPop||it.id===lastKey))?' pop':'')+'"><svg><use href="#'+(on?'tick':'cross')+'"/></svg></span><span class="tx">'+esc(it.t)+'</span></button>'};
+    });
     if(!x.items.length)rows='<p class="empty">No items yet. Use ⋯ then Add item.</p>';
-    h+='<details data-lid="'+x.id+'"'+((ed||open[x.id]!==false)?' open':'')+(intro?' style="animation:up .45s '+(i*45)+'ms both"':'')+'><summary>'+ic+'<span class="nm">'+esc(x.name)+'</span><span class="ct'+(x.items.length&&n===x.items.length?' full':'')+'">'+n+'/'+x.items.length+'</span>'+mb+'</summary><div class="items" data-lid="'+x.id+'">'+rows+'</div>'+(ed?'<div class="eadd"><button class="chip" data-addi="'+x.id+'">+ Add item</button><button class="chip on" data-done>Done</button></div>':'')+'</details>'});
+    h+='<details data-lid="'+x.id+'"'+((ed||open[x.id]!==false)?' open':'')+(intro?' style="animation:up .45s '+(i*45)+'ms both"':'')+'><summary>'+ic+'<span class="nm">'+esc(x.name)+'</span><span class="ct'+(n===x.items.length?' full':'')+'">'+n+'/'+x.items.length+'</span>'+mb+'</summary><div class="items" data-lid="'+x.id+'">'+rows+(ed?'<div class="eadd"><button class="btn rst" data-addi="'+x.id+'">Add item</button></div>':'')+'</div></details>';
+  });
   $("list").innerHTML=h;
   $("btnArr").classList.toggle("on",mode==="arrange");
   $("arc").style.strokeDashoffset=188.5*(1-(c.t?c.d/c.t:0));
@@ -334,15 +345,15 @@ var ORDER=[1,2,3,4,5,6,0],CH="wwm_reminders_v2";
 function native(){return window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.LocalNotifications}
 function hm(){var p=cfg.time.split(":");return(+p[0])*60+(+p[1])}
 function lastDay(){return ORDER.filter(function(d){return cfg.days.indexOf(d)>=0}).pop()}
-function msgFor(d){return d===lastDay()?["Last day this week","Final chance to finish your checklist before Monday’s reset."]:["Weekly shops","Time to check your weekly shop checklist."]}
-async function ensureCh(){try{await Capacitor.Plugins.LocalNotifications.createChannel({id:CH,name:"Shop reminders",description:"Weekly shop checklist reminders",importance:5,visibility:1,vibration:true})}catch(e){}}
+function msgFor(d){return d===lastDay()?['Last day this week','Final chance to finish your checklist before Monday’s reset.']:['Weekly shops','Time to check your weekly shop checklist.']}
+async function ensureCh(){try{await Capacitor.Plugins.LocalNotifications.createChannel({id:CH,name:"Shop reminders",description:"Weekly shop checklist reminders",importance:5,visibility:1,vibrationPattern:[0,250,250,250],lightColor:"#1fb58f"})}catch(e){}}
 async function sched(){
   if(!native())return;var LN=Capacitor.Plugins.LocalNotifications;
   try{var p=await LN.getPending();if(p.notifications.length)await LN.cancel({notifications:p.notifications})}catch(e){}
   if(g("wwm-notif")!=="1")return;
   await ensureCh();var list=[],base=hm();
   cfg.days.forEach(function(d){for(var n=0;n<cfg.times;n++){var m=base+n*240;if(m>=1440)break;var t=msgFor(d);
-    list.push({id:100+d*10+n,title:t[0],body:t[1],channelId:CH,schedule:{on:{weekday:d+1,hour:Math.floor(m/60),minute:m%60},allowWhileIdle:true}})}});
+    list.push({id:100+d*10+n,title:t[0],body:t[1],channelId:CH,schedule:{on:{weekday:d+1,hour:Math.floor(m/60),minute:m%60},allowWhileIdle:true}})});
   if(cfg.last){var m=150-cfg.lastH*60,wd=2;if(m<0){m+=1440;wd=1}
     list.push({id:900,title:"Shops reset soon",body:"Reset in "+cfg.lastH+"h. Finish what’s left.",channelId:CH,schedule:{on:{weekday:wd,hour:Math.floor(m/60),minute:m%60},allowWhileIdle:true}})}
   if(list.length)try{await LN.schedule({notifications:list})}catch(e){}}
@@ -357,7 +368,9 @@ function dueCheck(){timers.forEach(clearTimeout);timers=[];
   var d=new Date();if(cfg.days.indexOf(d.getDay())<0)return;
   for(var n=0;n<cfg.times;n++){var m=hm()+n*240;if(m>=1440)break;var t=new Date();t.setHours(0,m,0,0);
     if(t>d)timers.push(setTimeout(function(){if(left()>0){var x=msgFor(new Date().getDay());try{new Notification(x[0],{body:left()+" items left. "+x[1]})}catch(e){}}},t-d))}}
-async function permState(){try{if(native()){var p=await Capacitor.Plugins.LocalNotifications.checkPermissions();return p.display==="granted"?"Allowed":p.display==="denied"?"Blocked":"Not asked yet"}if("Notification" in window)return Notification.permission==="granted"?"Allowed":Notification.permission==="denied"?"Blocked":"Not asked yet"}catch(e){}return"Unavailable here"}
+async function permState(){try{if(native()){var p=await Capacitor.Plugins.LocalNotifications.checkPermissions();return p.display==="granted"?"Allowed":p.display==="denied"?"Blocked":"Not asked yet"}
+  else if("Notification" in window){return Notification.permission==="granted"?"Allowed":Notification.permission==="denied"?"Blocked":"Not asked yet"}
+  return "Not available"}catch(e){return "Unknown"}}
 function showPerm(){permState().then(function(t){var e=$("ps"),b=$("allowb");if(e)e.textContent=t;if(b)b.hidden=t==="Allowed"})}
 async function testNotif(){
   try{
@@ -365,7 +378,7 @@ async function testNotif(){
       if(p.display!=="granted")p=await LN.requestPermissions();
       if(p.display!=="granted"){toast("Blocked. Allow in Android Settings > Apps > Weekly Shops > Notifications.");showPerm();return}
       await ensureCh();
-      await LN.schedule({notifications:[{id:999,title:"Test reminder",body:"Reminders are working.",channelId:CH,schedule:{at:new Date(Date.now()+1500),allowWhileIdle:true}}]});toast("Test sent. Check your notifications.")}
+      await LN.schedule({notifications:[{id:999,title:"Test reminder",body:"Reminders are working.",channelId:CH,schedule:{at:new Date(Date.now()+1500),allowWhileIdle:true}}]});toast("Test sent. Check your notification tray.")}
     else if("Notification" in window){var r=Notification.permission==="granted"?"granted":await Notification.requestPermission();
       if(r!=="granted"){toast("Notifications are blocked in this browser.");return}new Notification("Test reminder",{body:"Reminders are working."});toast("Test sent")}
     else toast("Not available in this browser. Use the APK.")
@@ -397,8 +410,8 @@ function renderSet(){
     sact("test","Send test notification")
   ].filter(Boolean));
   h+=sec("Appearance",[
-    '<div class="sr col"><div><span class="l">Theme</span></div><div class="seg" style="margin-top:10px">'+["auto","light","dark"].map(function(t){return'<button class="chip'+(cfg.theme===t?' on':'')+'" data-th="'+t+'">'+t[0].toUpperCase()+t.slice(1)+'</button>'}).join("")+'</div></div>',
-    '<div class="sr col"><div><span class="l">Accent color</span></div><div class="sws" style="margin-top:10px">'+SW.map(function(c){return'<button class="sw'+(cfg.accent===c?' on':'')+'" style="background:'+c+'" data-ac="'+c+'" aria-label="'+c+'"></button>'}).join("")+'<input type="color" id="acc" value="'+cfg.accent+'" aria-label="Custom color"></div></div>'
+    '<div class="sr col"><div><span class="l">Theme</span></div><div class="seg" style="margin-top:10px">'+["auto","light","dark"].map(function(t){return'<button class="chip'+(cfg.theme===t?' on':'')+'" data-th="'+t+'">'+t+'</button>'}).join("")+'</div></div>',
+    '<div class="sr col"><div><span class="l">Accent color</span></div><div class="sws" style="margin-top:10px">'+SW.map(function(c){return'<button class="sw'+(cfg.accent===c?' on':'')+'" style="background:'+c+'" data-ac="'+c+'" aria-label="Accent color '+c+'"></button>'}).join("")+'</div></div>'
   ]);
   h+=sec("Lists and data",[
     sr("Manage lists",'<span class="v">On Home</span>',"Use ⋯ on a category, + to add, and the arrange button to reorder"),
@@ -407,7 +420,9 @@ function renderSet(){
   ]);
   h+=sec("About",[
     sr("Version",'<span class="v">'+VERSION+'</span>'),
-    sact("policy","Privacy policy"),sact("notes","Notes"),sact("patch","Patch notes")
+    sr("Developer",'<span class="v">'+APP_INFO.developer+'</span>'),
+    sact("gh","Open GitHub page"),
+    sact("repo","Open project repository")
   ],"Unofficial fan tool. Not affiliated with the game’s publisher.");
   $("setbody").innerHTML=h;showPerm()}
 var sb=$("setbody");
@@ -419,13 +434,15 @@ sb.addEventListener("click",function(e){var t=e.target.closest("[data-day],[data
     if(a==="test")testNotif();
     else if(a==="allow")enable().then(renderSet);
     else if(a==="rstp")confirmS("Reset progress?","All items will be marked as not done for this week.","Reset",function(){st.done={};save();render();toast("Progress reset")});
-    else if(a==="rstl")confirmS("Restore defaults?","This replaces all your shops, items, renames and custom categories with the original list.","Restore",function(){L=defaults();st.done={};mode="";save();saveL();toast("Defaults restored")});
-    else if(a==="policy")docS("Privacy policy","<p>This app works fully offline. Your checklist, settings and lists are stored <b>only on this device</b>.</p><ul><li>No account, no ads, no analytics, no tracking.</li><li>Nothing is sent to any server.</li><li>Notifications are scheduled locally by your phone. The only permission requested is notifications.</li><li>Clearing the app’s data deletes everything.</li></ul>");
-    else if(a==="notes")docS("Notes","<ul><li>Progress resets every Monday at 02:30, matching the game restock.</li><li>Reminders fire even when the app is closed, but some phones delay them. Set battery usage to Unrestricted for this app.</li><li>The last-minute reminder is fixed, so it still fires if you finished early.</li><li>Reminder notifications use their own high-importance channel so they can appear as banners.</li></ul>");
-    else if(a==="patch")docS("Patch notes","<p><b>1.5</b></p><ul><li>Reminders use a high-importance channel for pop-up banners</li><li>Rename, edit, delete and drag to reorder shops and items</li><li>Per-category options menu</li><li>Redesigned, grouped settings</li><li>Smaller floating navigation</li></ul><p><b>1.4</b></p><ul><li>Floating bar that hides on scroll, fixed overlapping screens, custom categories</li></ul><p><b>1.3</b></p><ul><li>Bottom navigation, slide transitions, fixed Send test</li></ul><p><b>1.2</b></p><ul><li>Settings, custom tasks, accent color, themes, new icon</li></ul><p><b>1.1</b></p><ul><li>SVG icons, animations, Monday/Thursday/Saturday reminders</li></ul><p><b>1.0</b></p><ul><li>First release</li></ul>")}});
+    else if(a==="rstl")confirmS("Restore defaults?","This replaces all your shops, items, renames and custom categories with the original list.","Restore",function(){L=defaults();st.done={};mode="";saveL();toast("Default shops restored")});
+    else if(a==="gh"||a==="repo")window.open(APP_INFO.github,"_blank","noopener,noreferrer");
+    else if(a==="policy")docS("Privacy policy","<p>This app works fully offline. Your checklist, settings and lists are stored <b>only on this device</b>.</p><ul><li>No account, no ads, no analytics.</li><li>All app data stays in local browser storage or the APK app storage.</li></ul>");
+    else if(a==="notes")docS("Notes","<ul><li>Progress resets every Monday at 02:30, matching the game restock.</li><li>Reminders fire even when the app is closed, but some phones delay them. Set reminders in settings to test them.</li><li>Use the home screen to add or remove items and the arrangement button to reorder categories.</li></ul>");
+    else if(a==="patch")docS("Patch notes","<p><b>1.5</b></p><ul><li>Reminders use a high-importance channel for pop-up banners</li><li>Rename, edit, delete and drag to reorder shops and items</li><li>Default lists are restored cleanly when needed</li></ul>");}}
+); 
 sb.addEventListener("change",function(e){var t=e.target;
   if(t.id==="sRem"){if(t.checked)enable().then(function(ok){if(!ok)t.checked=false});else{s("wwm-notif","0");sched();dueCheck();toast("Reminders off")}return}
-  if(t.id==="tm"&&t.value)cfg.time=t.value;else if(t.id==="tn")cfg.times=+t.value;else if(t.id==="lm"){cfg.last=t.checked;saveCfg();renderSet();return}
+  if(t.id==="tm"&&t.value)cfg.time=t.value;else if(t.id=="tn")cfg.times=+t.value;else if(t.id==="lm"){cfg.last=t.checked;saveCfg();renderSet();return}
   else if(t.id==="lh")cfg.lastH=+t.value;else if(t.id==="acc"){cfg.accent=t.value;saveCfg();renderSet();return}else return;
   saveCfg()});
 
@@ -436,7 +453,7 @@ function show(v){var h=$("home"),p=$("settings");
   $("nh").classList.toggle("on",!v);$("ns").classList.toggle("on",v);$("pill").classList.toggle("s",v);if(v)renderSet()}
 $("nh").onclick=function(){show(false)};
 $("ns").onclick=function(){show(true)};
-(function(){var nv=document.querySelector(".nav");[$("home"),$("settings")].forEach(function(p){var y=0;p.addEventListener("scroll",function(){var c=p.scrollTop;if(c>y+8&&c>60)nv.classList.add("hide");else if(c<y-8||c<20)nv.classList.remove("hide");y=c},{passive:true})})})();
+(function(){var nv=document.querySelector(".nav");[$("home"),$("settings")].forEach(function(p){var y=0;p.addEventListener("scroll",function(){var c=p.scrollTop;if(c>y+8&&c>60)nv.classList.add("hide");else nv.classList.remove("hide");y=c})})})();
 look();render();dueCheck();firstRun();
 </script>
 </body>
